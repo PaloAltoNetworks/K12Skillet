@@ -1,0 +1,31 @@
+<entry name="Black-List">
+  <type>URL List</type>
+  <list>
+    <member>www.yahoo.com</member>
+    <member>*.yahoo.com</member>
+  </list>
+</entry>
+<entry name="Approved Search Engines">
+  <list>
+    <member>google.com</member>
+    <member>*.google.com</member>
+    <member>bing.com</member>
+    <member>*.bing.com</member>
+  </list>
+  <type>URL List</type>
+</entry>
+<entry name="Blocked Search terms">
+  <list>
+    <member>*/*+build+a+bomb</member>
+    <member>*/*=build+a+bomb</member>
+    <member>*/*+test+test</member>
+    <member>*/*=test+test</member>
+  </list>
+  <type>URL List</type>
+</entry>
+<entry name="Critical_Education_Sites">
+  <list>
+    <member>{{ CRITICAL_EDUCATION_SITE }}</member>
+  </list>
+  <type>URL List</type>
+</entry>

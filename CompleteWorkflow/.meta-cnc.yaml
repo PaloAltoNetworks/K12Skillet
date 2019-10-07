@@ -1,0 +1,43 @@
+name: workflow_configure_update_and_move
+# label used for menu selection
+label: Complete K12 Workflow
+
+description: |
+  This will complete all steps for a K12 Config (Not working yet!!!)
+# type of skillet (panos or panorama or template or terraform)
+type: workflow
+
+# more complex skillets may express a dependency on another skillet that should be loaded before this one.
+# For example, a set of skillets may build off of a single 'golden config' that contains shared configuration
+# As this skillet is very simple, there is no need to build on another one.
+extends:
+
+# Labels allow grouping and type specific options and are generally only used in advanced cases
+labels:
+  collection:
+    - Education
+
+# variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
+# may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
+#variables:
+#  - name: tier
+#    description:
+#    default: gold
+#    type_hint: dropdown
+#    dd_list:
+#          - key: gold
+#            value: gold
+#          - key: silver
+#            value: silver
+#          - key: bronze
+#            value: bronze
+
+# Snippets is an ordered list of configuration xml fragments that will be pushed to the PAN-OS NGFW. The xpath
+# determines where in the configuration hierarchy the xml fragment will be set. 'file' indicates the name of the file
+# to load and parse. Jinja2 style variables will be variable interpolated using the values of the 'variables' defined
+# in the 'variables' section.
+snippets:
+# from repo
+  - name: skillet_panos_v90
+  - name: ngfw_content_update
+  - name: K-12 Skillet

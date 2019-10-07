@@ -1,0 +1,50 @@
+<entry name="DNS proxy with Safe Search">
+  <cache>
+    <max-ttl>
+      <enabled>yes</enabled>
+      <time-to-live>3600</time-to-live>
+    </max-ttl>
+    <enabled>yes</enabled>
+  </cache>
+  <default>
+    <primary>{{ DNS_PROXY_IP_PRIMARY }}</primary>
+    <secondary>{{ DNS_PROXY_IP_SECONDARY }}</secondary>
+  </default>
+  <tcp-queries>
+    <enabled>no</enabled>
+  </tcp-queries>
+  <static-entries>
+    <entry name="Google 1">
+      <address>
+        <member>{{ GOOGLE_SAFE_SEARCH_IP }}</member>
+      </address>
+      <domain>www.google.com</domain>
+    </entry>
+    <entry name="Google 2">
+      <address>
+        <member>{{ GOOGLE_SAFE_SEARCH_IP }}</member>
+      </address>
+      <domain>google.com</domain>
+    </entry>
+    <entry name="Bing 1">
+      <address>
+        <member>{{ BING_SAFE_SEARCH_IP }}</member>
+      </address>
+      <domain>www.bing.com</domain>
+    </entry>
+    <entry name="Bing 2">
+      <address>
+        <member>{{ BING_SAFE_SEARCH_IP }}</member>
+      </address>
+      <domain>bing.com</domain>
+    </entry>
+  </static-entries>
+   {%- if SAFE_SEARCH == "DNS_PROXY" %}
+  <enabled>yes</enabled>
+   {% else %}
+  <enabled>no</enabled>
+   {% endif %}
+  <interface>
+    <member>ethernet{{ TRUST_ZONE_INTERFACE }}</member>
+  </interface>
+</entry>
