@@ -4,7 +4,7 @@
 ## Overview
 
 The K-12 Skillet is indented for K-12 educational deployment configuration as an Internet Gateway
-using 2 zones, the untrust zone as a dhcp-client, and Safe Search configurations (Decyption, DNS Proxy, and DNS restrictions).
+using 2 zones, the untrust zone as a dhcp-client, and Safe Search configurations (Decryption, DNS Proxy, and DNS restrictions).
 
 The security policy provides for outbound policies using IronSkillet
 best practice security profiles and groups.
