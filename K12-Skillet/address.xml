@@ -5,7 +5,7 @@
   <ip-netmask>{{ SANCTIONED_DNS_01_IP }}</ip-netmask>
 </entry>
 <entry name="FW - Trust">
-  <ip-netmask>{{ TRUSTED_INTERFACE_IP }}</ip-netmask>
+  <ip-netmask>{{ TRUSTED_INTERFACE_IP.split('/')[0] }}/32</ip-netmask>
 </entry>
 <entry name="{{ LOCAL_DNS_01_NAME }}">
   <ip-netmask>{{LOCAL_DNS_01_IP }}</ip-netmask>
