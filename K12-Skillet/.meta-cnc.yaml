@@ -110,6 +110,14 @@ variables:
     description: Critical Education Site For Decryption Bypass
     default: example.com
     type_hint: text
+  - name: TRUSTED_INTERFACE_IP
+    description: Trusted Interface IP
+    default: 204.79.197.220/24
+    type_hint: text
+  - name: UNTRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/1
+    type_hint: text
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
