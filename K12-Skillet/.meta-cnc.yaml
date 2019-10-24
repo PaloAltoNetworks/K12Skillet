@@ -110,6 +110,10 @@ variables:
     description: Critical Education Site For Decryption Bypass
     default: example.com
     type_hint: text
+  - name: TRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/2
+    type_hint: text
   - name: TRUSTED_INTERFACE_IP
     description: Trusted Interface IP
     default: 204.79.197.220/24
