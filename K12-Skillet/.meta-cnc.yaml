@@ -116,7 +116,7 @@ variables:
     type_hint: text
   - name: TRUSTED_INTERFACE_IP
     description: Trusted Interface IP
-    default: 204.79.197.220/24
+    default: 204.79.197.220/32
     type_hint: text
   - name: UNTRUST_ZONE_INTERFACE
     description: Trusted Interface reference
