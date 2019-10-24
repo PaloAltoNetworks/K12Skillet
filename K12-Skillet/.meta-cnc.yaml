@@ -140,6 +140,9 @@ snippets:
   - name: virtual_router
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
     file: network_virtual_router.xml
+  - name: zone
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    file: zone.xml
   - name: dns_proxy
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/dns-proxy
     file: dns_proxy.xml
