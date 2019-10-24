@@ -110,6 +110,18 @@ variables:
     description: Critical Education Site For Decryption Bypass
     default: example.com
     type_hint: text
+  - name: TRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/2
+    type_hint: text
+  - name: TRUSTED_INTERFACE_IP
+    description: Trusted Interface IP
+    default: 204.79.197.220/32
+    type_hint: text
+  - name: UNTRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/1
+    type_hint: text
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
@@ -126,9 +138,15 @@ snippets:
   - name: external_list
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/external-list
     file: external_list.xml
+  - name: interface
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
+    file: interface.xml
   - name: virtual_router
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
     file: network_virtual_router.xml
+  - name: zone
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    file: zone.xml
   - name: dns_proxy
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/dns-proxy
     file: dns_proxy.xml

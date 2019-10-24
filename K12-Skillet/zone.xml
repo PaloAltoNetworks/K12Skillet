@@ -1,14 +1,14 @@
 <entry name="Untrust">
   <network>
     <layer3>
-      <member>ethernet{{ UNTRUST_ZONE_INTERFACE }}</member>
+      <member>{{ UNTRUST_ZONE_INTERFACE }}</member>
     </layer3>
   </network>
 </entry>
 <entry name="Trust">
   <network>
     <layer3>
-      <member>ethernet{{ TRUST_ZONE_INTERFACE }}</member>
+      <member>{{ TRUST_ZONE_INTERFACE }}</member>
     </layer3>
   </network>
 </entry>
