@@ -54,6 +54,6 @@ The K-12 Skillet is intended to be used with Panhandler. There is a 3-step depmo
 *Step #1: Load Iron-Skillet
 *Step #2: NGFW Content Updates
 *Step #3: K12 Skillet Config
-![Image of Skillet](https://i.imgur.com/LMF2Pk.jpg)
+![Image of Skillet](http://i.imgur.com/LMF2Pk.jpg)
 
 
