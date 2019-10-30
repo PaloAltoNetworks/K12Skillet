@@ -1,4 +1,4 @@
-# K-12 Skillet
+# K12 Skillet
 
 
 ## Overview
@@ -9,8 +9,13 @@ using 2 zones, the untrust zone as a dhcp-client, and Safe Search configurations
 The security policy provides for outbound policies using IronSkillet
 best practice security profiles and groups.
 
+## Requirements
 
-## K-12 Skillet and panhandler
+*PAN-OS 9.X
+*Threat, URL, and Wildfire subscriptions
+*Panhandler
+
+## K12 Skillet and panhandler
 
 K-12 Skillet is designed to be used with the panhandler application to API
 load structured configurations. It also captures web form data to semi-customize
@@ -33,3 +38,22 @@ product functionality and not for help in deploying or using the template or scr
 Unless explicitly tagged, all projects or work posted in our GitHub repository
 (at https://github.com/PaloAltoNetworks) or sites other than our official Downloads page
 on https://support.paloaltonetworks.com are provided under the best effort policy.
+
+## Features Included
+*Builds on the Iron Skillet configurations
+*Dynamic configuration based on the desired Safe Search deployment:
+  *Transparent - SSL inspection with NGFW enforced Safe Search
+  *DNS-Proxy - NGFW responds to Google and Bing search engine requests with Safe Search only server IPs
+  *Local DNS CNAME - Limits outbound DNS requests to sanctioned internal DNS servers with Google and Bing Safe Search configurations
+*Optional country block - Only allows IPs from US, Mexico, Canada, and cloud providers (based on EDL)
+*K-12 Reports
+*Targeted decryption policies to help enable SSL-Decryption adoption and limit risk
+
+## How to use
+The K-12 Skillet is intended to be used with Panhandler. There is a 3-step depmoyment process that is intended to be executed in order.
+*Step #1: Load Iron-Skillet
+*Step #2: NGFW Content Updates
+*Step #3: K12 Skillet Config
+![Image of Skillet](https://imgur.com/LMF2Pk7)
+
+
