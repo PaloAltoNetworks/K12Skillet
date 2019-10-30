@@ -1,17 +1,17 @@
 # snippets is used to load a full NGFW configuration
 
 # snippet folder name
-name: K-12 Skillet
+name: K12 Skillet
 # label used for menu selection
-label: (Step 3) K-12 Skillet
-description: K-12 Safe Search Skillet baseline configuration for a firewall
+label: (Step 3) K12 Skillet
+description: K12 Safe Search Skillet baseline configuration for a firewall
 
 type: panos
 extends:
 
 # grouping of like snippets for dynamic menu creation in pan-cnc
 labels:
-  service_type: K-12_skillet
+  service_type: K12_skillet
   collection:
     - Education
 
