@@ -100,11 +100,11 @@ variables:
     type_hint: text
   - name: CLOUD_EDL_AMAZON
     description: Amazon Cloud EDL URL
-    default: http://192.0.2.1
+    default: http://192.0.2.2
     type_hint: text
   - name: CLOUD_EDL_GOOGLE
     description: Google Cloud EDL URL
-    default: http://192.0.2.1
+    default: http://192.0.2.3
     type_hint: text
   - name: CRITICAL_EDUCATION_SITE
     description: Critical Education Site For Decryption Bypass
@@ -116,10 +116,10 @@ variables:
     type_hint: text
   - name: TRUSTED_INTERFACE_IP
     description: Trusted Interface IP
-    default: 204.79.197.220/32
+    default: 192.0.2.100/32
     type_hint: text
   - name: UNTRUST_ZONE_INTERFACE
-    description: Trusted Interface reference
+    description: UnTrusted Interface reference
     default: ethernet1/1
     type_hint: text
 
