@@ -4,3 +4,6 @@
 [submodule "submodules/ironskillet-components"]
 	path = submodules/ironskillet-components
 	url = https://github.com/PaloAltoNetworks/ironskillet-components.git
+[submodule "submodules/panos-config-elements"]
+	path = submodules/panos-config-elements
+	url = https://gitlab.com/panw-gse/tech-library/configure/panos-config-elements.git
