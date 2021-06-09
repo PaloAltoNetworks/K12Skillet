@@ -175,3 +175,11 @@ snippets:
   - name: panos_k12_local_dns_cname_10_0
     include: panos_k12_local_dns_cname_10_0
     when: "'LOCAL_DNS_CNAME' in SAFE_SEARCH"
+
+  - name: panos_k12_chromebook_no_decryption_10_0
+    include: panos_k12_chromebook_no_decryption_10_0
+#    when:
+
+  - name: panos_k12_saml_no_decryption_10_0
+    include: panos_k12_saml_no_decryption_10_0
+#    when:
