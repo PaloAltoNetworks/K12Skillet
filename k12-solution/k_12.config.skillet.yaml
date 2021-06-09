@@ -54,7 +54,7 @@ variables:
     type_hint: text
     toggle_hint:
       source: SAFE_SEARCH
-      value: 'SSL_DECRYPTION' or 'DNS_PROXY'
+      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
 
   - name: SANCTIONED_DNS_01_IP
     description: Safe Search Sanctioned External DNS Server IP Address
