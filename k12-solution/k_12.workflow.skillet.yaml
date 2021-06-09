@@ -66,11 +66,11 @@ snippets:
       - name: password
         source: TARGET_PASSWORD
 
-  - name: k_12_ironskillet_v9x
-    when: "'v9.x' in panos_sw_version"
+  - name: k_12_ironskillet_v10_0
+    when: "'v10.0' in panos_sw_version"
 
-  - name: k_12_ironskillet_v10x
-    when: "'v10.x' in panos_sw_version"
+  - name: k_12_ironskillet_v10_1
+    when: "'v10.1' in panos_sw_version"
 
   - name: k_12_config_skillet
     when: "'load_k_12_config' in subskillet_execution_options"
