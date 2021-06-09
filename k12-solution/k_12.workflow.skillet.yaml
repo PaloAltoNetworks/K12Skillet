@@ -41,11 +41,15 @@ variables:
 
   - name: subskillet_execution_options
     description: Check the boxes for which skillets to execute
-    default: ['load_k_12_config', 'load_esports_config']
+    default: ['load_k_12_config']
     type_hint: checkbox
     cbx_list:
       - key: Load empty NGFW baseline config
         value: empty_starter_config
+      - key: Perform content update
+        value: do_content_update
+      - key: Configure for IronSkillet
+        value: load_iron_skillet
       - key: Configure for K-12
         value: load_k_12_config
       - key: Configure for eSports
@@ -58,6 +62,7 @@ snippets:
     when: "'empty_starter_config' in subskillet_execution_options"
 
   - name: panos_ansible_content_update
+    when: "'do_content_update' in subskillet_execution_options"
     transform:
       - name: ip_address
         source: TARGET_IP
@@ -67,10 +72,10 @@ snippets:
         source: TARGET_PASSWORD
 
   - name: k_12_ironskillet_v10_0
-    when: "'v10.0' in panos_sw_version"
+    when: "'v10.0' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
 
   - name: k_12_ironskillet_v10_1
-    when: "'v10.1' in panos_sw_version"
+    when: "'v10.1' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
 
   - name: k_12_config_skillet
     when: "'load_k_12_config' in subskillet_execution_options"
