@@ -33,6 +33,86 @@ variables:
       - key: 'Local DNS CNAME'
         value: 'LOCAL_DNS_CNAME'
 
+  - name: SANCTIONED_DNS_01_NAME
+    description: Safe Search Sanctioned External DNS Server Name
+    default: Google 1
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+
+  - name: SANCTIONED_DNS_01_IP
+    description: Safe Search Sanctioned External DNS Server IP Address
+    default: 8.8.8.8/32
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+
+  - name: SANCTIONED_DNS_02_NAME
+    description: Safe Search Sanctioned External DNS Server Name
+    default: Google 2
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+
+  - name: SANCTIONED_DNS_02_IP
+    description: Safe Search Sanctioned External DNS Server IP Address
+    default: 8.8.4.4/32
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+
+  - name: LOCAL_DNS_01_NAME
+    description: Safe Search Local DNS Server Name
+    default: Local DNS 1
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: 'LOCAL_DNS_CNAME'
+
+  - name: LOCAL_DNS_01_IP
+    description: Safe Search Local DNS Server IP Address
+    default: 192.0.2.1
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: 'LOCAL_DNS_CNAME'
+
+  - name: DNS_PROXY_IP_PRIMARY
+    description: Safe Search DNS Proxy Primary DNS Server IP Address
+    default: 8.8.8.8
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: 'DNS_PROXY'
+
+  - name: DNS_PROXY_IP_SECONDARY
+    description: Safe Search DNS Proxy Secondary DNS Server IP Address
+    default: 8.8.4.4
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: 'DNS_PROXY'
+
+  - name: GOOGLE_SAFE_SEARCH_IP
+    description: Google Safe Search Server IP
+    default: 216.239.38.120
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: 'DNS_PROXY'
+
+  - name: BING_SAFE_SEARCH_IP
+    description: Bing Safe Search Server IP
+    default: 204.79.197.220
+    type_hint: text
+    toggle_hint:
+      source: SAFE_SEARCH
+      value: 'DNS_PROXY'
+
   - name: INCLUDE_COUNTRY_BLOCK
     description: Add rules to permit traffic only from US, Mexico, Canada, and Cloud Providers EDL
     default: 'no'
@@ -43,73 +123,47 @@ variables:
       - key: 'no'
         value: 'no'
 
-  - name: SANCTIONED_DNS_01_NAME
-    description: Safe Search Sanctioned External DNS Server Name
-    default: Google 1
-    type_hint: text
-
-  - name: SANCTIONED_DNS_01_IP
-    description: Safe Search Sanctioned External DNS Server IP Address
-    default: 8.8.8.8/32
-    type_hint: text
-  - name: SANCTIONED_DNS_02_NAME
-    description: Safe Search Sanctioned External DNS Server Name
-    default: Google 2
-    type_hint: text
-  - name: SANCTIONED_DNS_02_IP
-    description: Safe Search Sanctioned External DNS Server IP Address
-    default: 8.8.4.4/32
-    type_hint: text
-  - name: LOCAL_DNS_01_NAME
-    description: Safe Search Local DNS Server Name
-    default: Local DNS 1
-    type_hint: text
-  - name: LOCAL_DNS_01_IP
-    description: Safe Search Local DNS Server IP Address
-    default: 192.0.2.1
-    type_hint: text
-  - name: DNS_PROXY_IP_PRIMARY
-    description: Safe Search DNS Proxy Primary DNS Server IP Address
-    default: 8.8.8.8
-    type_hint: text
-  - name: DNS_PROXY_IP_SECONDARY
-    description: Safe Search DNS Proxy Secondary DNS Server IP Address
-    default: 8.8.4.4
-    type_hint: text
-  - name: GOOGLE_SAFE_SEARCH_IP
-    description: Google Safe Search Server IP
-    default: 216.239.38.120
-    type_hint: text
-  - name: BING_SAFE_SEARCH_IP
-    description: Bing Safe Search Server IP
-    default: 204.79.197.220
-    type_hint: text
   - name: CLOUD_EDL_MICROSOFT
     description: Microsoft Cloud EDL URL
     default: http://192.0.2.1
     type_hint: text
+    toggle_hint:
+      source: INCLUDE_COUNTRY_BLOCK
+      value: 'yes'
+
   - name: CLOUD_EDL_AMAZON
     description: Amazon Cloud EDL URL
     default: http://192.0.2.2
     type_hint: text
+    toggle_hint:
+      source: INCLUDE_COUNTRY_BLOCK
+      value: 'yes'
+
   - name: CLOUD_EDL_GOOGLE
     description: Google Cloud EDL URL
     default: http://192.0.2.3
     type_hint: text
+    toggle_hint:
+      source: INCLUDE_COUNTRY_BLOCK
+      value: 'yes'
+
   - name: CRITICAL_EDUCATION_SITE
     description: Critical Education Site For Decryption Bypass
     default: example.com
     type_hint: text
+
   - name: TRUST_ZONE_INTERFACE
     description: Trusted Interface reference
     default: ethernet1/2
     type_hint: text
+
   - name: TRUSTED_INTERFACE_IP
     description: Trusted Interface IP
     default: 192.0.2.100/32
     type_hint: text
+
   - name: UNTRUST_ZONE_INTERFACE
-    description: UnTrusted Interface reference
+    description: Untrusted Interface reference
     default: ethernet1/1
     type_hint: text
 
