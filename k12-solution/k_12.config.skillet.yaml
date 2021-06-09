@@ -36,7 +36,7 @@ variables:
   # to be used during the configuration build
   - name: SAFE_SEARCH
     description: What type of Safe Search configuration do you want to enable?
-    default: 'none'
+    default: 'None'
     type_hint: dropdown
     dd_list:
       - key: 'None'
@@ -54,7 +54,9 @@ variables:
     type_hint: text
     toggle_hint:
       source: SAFE_SEARCH
-      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+      value:
+        - 'SSL_DECRYPTION'
+        - 'DNS_PROXY'
 
   - name: SANCTIONED_DNS_01_IP
     description: Safe Search Sanctioned External DNS Server IP Address
@@ -62,7 +64,9 @@ variables:
     type_hint: text
     toggle_hint:
       source: SAFE_SEARCH
-      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+      value:
+        - 'SSL_DECRYPTION'
+        - 'DNS_PROXY'
 
   - name: SANCTIONED_DNS_02_NAME
     description: Safe Search Sanctioned External DNS Server Name
@@ -70,7 +74,9 @@ variables:
     type_hint: text
     toggle_hint:
       source: SAFE_SEARCH
-      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+      value:
+        - 'SSL_DECRYPTION'
+        - 'DNS_PROXY'
 
   - name: SANCTIONED_DNS_02_IP
     description: Safe Search Sanctioned External DNS Server IP Address
@@ -78,7 +84,9 @@ variables:
     type_hint: text
     toggle_hint:
       source: SAFE_SEARCH
-      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+      value:
+       - 'SSL_DECRYPTION'
+       - 'DNS_PROXY'
 
   - name: LOCAL_DNS_01_NAME
     description: Safe Search Local DNS Server Name
