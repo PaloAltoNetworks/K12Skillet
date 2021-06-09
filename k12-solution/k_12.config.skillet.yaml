@@ -17,8 +17,23 @@ labels:
 # variables used in the configuration templates
 # type_hint defines the form field type in pan-cnc
 variables:
-# this configuration allows you to select what type of Safe Search configuration
-# to be used during the configuration build
+  - name: TRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/2
+    type_hint: text
+
+  - name: TRUSTED_INTERFACE_IP
+    description: Trusted Interface IP
+    default: 192.0.2.100/32
+    type_hint: text
+
+  - name: UNTRUST_ZONE_INTERFACE
+    description: Untrusted Interface reference
+    default: ethernet1/1
+    type_hint: text
+
+  # this configuration allows you to select what type of Safe Search configuration
+  # to be used during the configuration build
   - name: SAFE_SEARCH
     description: What type of Safe Search configuration do you want to enable?
     default: 'none'
@@ -39,7 +54,7 @@ variables:
     type_hint: text
     toggle_hint:
       source: SAFE_SEARCH
-      value: "'SSL_DECRYPTION' or 'DNS_PROXY'"
+      value: 'SSL_DECRYPTION' or 'DNS_PROXY'
 
   - name: SANCTIONED_DNS_01_IP
     description: Safe Search Sanctioned External DNS Server IP Address
@@ -152,20 +167,6 @@ variables:
     default: example.com
     type_hint: text
 
-  - name: TRUST_ZONE_INTERFACE
-    description: Trusted Interface reference
-    default: ethernet1/2
-    type_hint: text
-
-  - name: TRUSTED_INTERFACE_IP
-    description: Trusted Interface IP
-    default: 192.0.2.100/32
-    type_hint: text
-
-  - name: UNTRUST_ZONE_INTERFACE
-    description: Untrusted Interface reference
-    default: ethernet1/1
-    type_hint: text
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
