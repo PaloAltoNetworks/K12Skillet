@@ -24,7 +24,7 @@ variables:
     default: 'none'
     type_hint: dropdown
     dd_list:
-      - key: 'none'
+      - key: 'None'
         value: 'NONE'
       - key: 'SSL Decryption'
         value: 'SSL_DECRYPTION'
@@ -42,10 +42,12 @@ variables:
         value: 'yes'
       - key: 'no'
         value: 'no'
+
   - name: SANCTIONED_DNS_01_NAME
     description: Safe Search Sanctioned External DNS Server Name
     default: Google 1
     type_hint: text
+
   - name: SANCTIONED_DNS_01_IP
     description: Safe Search Sanctioned External DNS Server IP Address
     default: 8.8.8.8/32

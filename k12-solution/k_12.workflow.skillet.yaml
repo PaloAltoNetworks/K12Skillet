@@ -31,13 +31,13 @@ variables:
 
   - name: panos_sw_version
     description: Next-Gen Firewall PAN-OS Version
-    default: v10.x
+    default: v10.0
     type_hint: dropdown
     dd_list:
-      - key: v9.x
-        value: v9.x
-      - key: v10.x
-        value: v10.x
+      - key: v10.0
+        value: v10.0
+      - key: v10.1
+        value: v10.1
 
   - name: subskillet_execution_options
     description: Check the boxes for which skillets to execute

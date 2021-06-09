@@ -1,9 +1,9 @@
 
 # snippet folder name
-name: k_12_ironskillet_v10_0
+name: k_12_ironskillet_v10_1
 # label used for menu selection
-label: IronSkillet for Version 10.0 used in K-12 Solution
-description: IronSkillet for Version 10.0 used in K-12 Solution
+label: IronSkillet for Version 10.1 used in K-12 Solution
+description: IronSkillet for Version 10.1 used in K-12 Solution
 
 type: panos
 
