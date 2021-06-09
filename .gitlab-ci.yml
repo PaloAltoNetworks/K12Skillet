@@ -3,6 +3,7 @@ image: registry.gitlab.com/panw-gse/as/as-py-base-image:latest
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   GIT_STRATEGY: fetch
+  GIT_SUBMODULE_STRATEGY: recursive
 
 cache:
   paths:
