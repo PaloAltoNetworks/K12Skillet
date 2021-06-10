@@ -32,24 +32,10 @@ variables:
     default: ethernet1/1
     type_hint: text
 
-  - name: SNIPPET_EXECUTION
-    description: Pick Snippets to Load
-    default: ['safe_search']
-    type_hint: checkbox
-    cbx_list:
-      - key: Configure Safe Search Enforcement
-        value: safe_search
-      - key: Permit traffic only from US, Mexico, Canada, and Cloud Providers EDL
-        value: country_block
-      - key: Configure Chromebook Bypass with No Decrypt Policy
-        value: chromebook_bypass
-      - key: Configure SAML No Decrypt Policy
-        value: saml_no_decryption
-
   # this configuration allows you to select what type of Safe Search configuration
   # to be used during the configuration build
   - name: SAFE_SEARCH
-    description: What type of Safe Search configuration do you want to enable?
+    description: Option 1 - What type of Safe Search configuration do you want to enable?
     default: 'None'
     type_hint: dropdown
     toggle_hint:
@@ -64,6 +50,38 @@ variables:
         value: 'DNS_PROXY'
       - key: 'Local DNS CNAME'
         value: 'LOCAL_DNS_CNAME'
+
+  - name: INCLUDE_COUNTRY_BLOCK
+    description: Option 2 - Add rules to permit traffic only from US, Mexico, Canada, and Cloud Providers EDL?
+    default: 'no'
+    type_hint: dropdown
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
+
+  - name: INCLUDE_CHROMEBOOK_BYPASS
+    description: Option 3 - Add a no-decrypt rule for Chromebook specific URLs?
+    help_text: Chromebook specific URLs include the Google Play store, Google APIs, and other sites.
+    default: 'no'
+    type_hint: dropdown
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
+
+  - name: INCLUDE_SAML_BYPASS
+    description: Option 4 - Add a no-decrypt rule for SAML Providers.
+    default: 'no'
+    type_hint: dropdown
+    help_text: SAML Providers include Google Accounts and Microsoft Online.
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
@@ -171,9 +189,9 @@ snippets:
     include_variables:
       - name: all
         toggle_hint:
-          source: SNIPPET_EXECUTION
-          value: 'country_block'
-    when: "'country_block' in SNIPPET_EXECUTION"
+          source: INCLUDE_COUNTRY_BLOCK
+          value: 'yes'
+    when: "'yes' in INCLUDE_COUNTRY_BLOCK"
 
   - name: panos_k12_ssl_decryption_10_0
     include: panos_k12_ssl_decryption_10_0
@@ -182,7 +200,7 @@ snippets:
         toggle_hint:
           source: SAFE_SEARCH
           value: 'SSL_DECRYPTION'
-    when: "'safe_search' in SNIPPET_EXECUTION and 'SSL_DECRYPTION' in SAFE_SEARCH"
+    when: "'SSL_DECRYPTION' in SAFE_SEARCH"
 
   - name: panos_k12_dns_proxy_10_0
     include: panos_k12_dns_proxy_10_0
@@ -191,7 +209,7 @@ snippets:
         toggle_hint:
           source: SAFE_SEARCH
           value: 'DNS_PROXY'
-    when: "'safe_search' in SNIPPET_EXECUTION and 'DNS_PROXY' in SAFE_SEARCH"
+    when: "'DNS_PROXY' in SAFE_SEARCH"
 
   - name: panos_k12_local_dns_cname_10_0
     include: panos_k12_local_dns_cname_10_0
@@ -200,12 +218,12 @@ snippets:
         toggle_hint:
           source: SAFE_SEARCH
           value: 'LOCAL_DNS_CNAME'
-    when: "'safe_search' in SNIPPET_EXECUTION and 'LOCAL_DNS_CNAME' in SAFE_SEARCH"
+    when: "'LOCAL_DNS_CNAME' in SAFE_SEARCH"
 
   - name: panos_k12_chromebook_no_decryption_10_0
     include: panos_k12_chromebook_no_decryption_10_0
-    when: "'chromebook_bypass' in SNIPPET_EXECUTION"
+    when: "'yes' in INCLUDE_CHROMEBOOK_BYPASS"
 
   - name: panos_k12_saml_no_decryption_10_0
     include: panos_k12_saml_no_decryption_10_0
-    when: "'saml_no_decryption' in SNIPPET_EXECUTION"
+    when: "'yes' in INCLUDE_SAML_BYPASS"
