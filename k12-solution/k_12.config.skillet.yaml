@@ -39,6 +39,8 @@ variables:
     default: 'None'
     type_hint: dropdown
     dd_list:
+      - key: 'None'
+        value: 'NONE'
       - key: 'SSL Decryption'
         value: 'SSL_DECRYPTION'
       - key: 'DNS Proxy'
@@ -46,19 +48,15 @@ variables:
       - key: 'Local DNS CNAME'
         value: 'LOCAL_DNS_CNAME'
 
-  - name: SNIPPET_EXECUTION
-    description: Pick Snippets to Load
-    default: []
-    type_hint: checkbox
-    cbx_list:
-      - key: Configure Safe Search Enforcement
-        value: safe_search
-      - key: Permit traffic only from US, Mexico, Canada, and Cloud Providers EDL
-        value: country_block
-      - key: Configure Chromebook Bypass with No Decrypt Policy
-        value: chromebook_bypass
-      - key: Configure SAML No Decrypt Policy
-        value: saml_no_decryption
+  - name: INCLUDE_COUNTRY_BLOCK
+    description: Add rules to permit traffic only from US, Mexico, Canada, and Cloud Providers EDL
+    default: 'no'
+    type_hint: dropdown
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
 
 
 # snippets used for api configuration including xpath and element as file name
@@ -164,24 +162,24 @@ snippets:
 
   - name: panos_k12_country_block_10_0
     include: panos_k12_country_block_10_0
-    when: "'country_block' in SNIPPET_EXECUTION"
+    when: "'yes' in INCLUDE_COUNTRY_BLOCK"
 
   - name: panos_k12_ssl_decryption_10_0
     include: panos_k12_ssl_decryption_10_0
-    when: "'SSL_DECRYPTION' in SAFE_SEARCH and 'safe_search' in SNIPPET_EXECUTION"
+    when: "'SSL_DECRYPTION' in SAFE_SEARCH"
 
   - name: panos_k12_dns_proxy_10_0
     include: panos_k12_dns_proxy_10_0
-    when: "'DNS_PROXY' in SAFE_SEARCH and 'safe_search' in SNIPPET_EXECUTION"
+    when: "'DNS_PROXY' in SAFE_SEARCH"
 
   - name: panos_k12_local_dns_cname_10_0
     include: panos_k12_local_dns_cname_10_0
-    when: "'LOCAL_DNS_CNAME' in SAFE_SEARCH and 'safe_search' in SNIPPET_EXECUTION"
+    when: "'LOCAL_DNS_CNAME' in SAFE_SEARCH"
 
   - name: panos_k12_chromebook_no_decryption_10_0
     include: panos_k12_chromebook_no_decryption_10_0
-    when: "'chromebook_bypass' in SNIPPET_EXECUTION"
+#    when:
 
   - name: panos_k12_saml_no_decryption_10_0
     include: panos_k12_saml_no_decryption_10_0
-    when: "'saml_no_decryption' in SNIPPET_EXECUTION"
+#    when:
