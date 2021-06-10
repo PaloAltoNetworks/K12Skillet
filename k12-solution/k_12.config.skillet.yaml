@@ -53,35 +53,35 @@ variables:
 
   - name: INCLUDE_COUNTRY_BLOCK
     description: Option 2 - Add rules to permit traffic only from US, Mexico, Canada, and Cloud Providers EDL?
-    default: 'no'
+    default: 'No'
     type_hint: dropdown
     dd_list:
-      - key: 'yes'
-        value: 'yes'
-      - key: 'no'
-        value: 'no'
+      - key: 'Yes'
+        value: 'Yes'
+      - key: 'No'
+        value: 'No'
 
   - name: INCLUDE_CHROMEBOOK_BYPASS
     description: Option 3 - Add a no-decrypt rule for Chromebook specific URLs?
     help_text: Chromebook specific URLs include the Google Play store, Google APIs, and other sites.
-    default: 'no'
+    default: 'No'
     type_hint: dropdown
     dd_list:
-      - key: 'yes'
-        value: 'yes'
-      - key: 'no'
-        value: 'no'
+      - key: 'Yes'
+        value: 'Yes'
+      - key: 'No'
+        value: 'No'
 
   - name: INCLUDE_SAML_BYPASS
     description: Option 4 - Add a no-decrypt rule for SAML Providers.
-    default: 'no'
+    default: 'No'
     type_hint: dropdown
     help_text: SAML Providers include Google Accounts and Microsoft Online.
     dd_list:
-      - key: 'yes'
-        value: 'yes'
-      - key: 'no'
-        value: 'no'
+      - key: 'Yes'
+        value: 'Yes'
+      - key: 'No'
+        value: 'No'
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
@@ -190,8 +190,8 @@ snippets:
       - name: all
         toggle_hint:
           source: INCLUDE_COUNTRY_BLOCK
-          value: 'yes'
-    when: "'yes' in INCLUDE_COUNTRY_BLOCK"
+          value: 'Yes'
+    when: "'Yes' in INCLUDE_COUNTRY_BLOCK"
 
   - name: panos_k12_ssl_decryption_10_0
     include: panos_k12_ssl_decryption_10_0
@@ -222,8 +222,8 @@ snippets:
 
   - name: panos_k12_chromebook_no_decryption_10_0
     include: panos_k12_chromebook_no_decryption_10_0
-    when: "'yes' in INCLUDE_CHROMEBOOK_BYPASS"
+    when: "'Yes' in INCLUDE_CHROMEBOOK_BYPASS"
 
   - name: panos_k12_saml_no_decryption_10_0
     include: panos_k12_saml_no_decryption_10_0
-    when: "'yes' in INCLUDE_SAML_BYPASS"
+    when: "'Yes' in INCLUDE_SAML_BYPASS"
