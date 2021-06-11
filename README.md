@@ -1,5 +1,6 @@
 # K12 Skillet
 
+Author: Anna Barone
 
 ## Overview
 
