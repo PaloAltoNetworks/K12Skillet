@@ -52,8 +52,8 @@ variables:
         value: load_iron_skillet
       - key: Configure for K-12
         value: load_k_12_config
-      - key: Configure for eSports
-        value: load_esports_config
+#      - key: Configure for eSports
+#        value: load_esports_config
 
 
 

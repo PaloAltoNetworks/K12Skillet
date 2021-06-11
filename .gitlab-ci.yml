@@ -34,4 +34,5 @@ before_script:
 test:
   script:
     - pip install --upgrade sli
+    - pip install --upgrade skilletlib
     - sli load -le
