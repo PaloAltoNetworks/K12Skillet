@@ -181,11 +181,11 @@ snippets:
         </network>
       </entry>
 
-  - name: panos_k12_base_common_elements_10_0
-    include: panos_k12_base_common_elements_10_0
+  - name: panos_k12_base_common_elements_10x
+    include: panos_k12_base_common_elements_10x
 
-  - name: panos_k12_country_block_10_0
-    include: panos_k12_country_block_10_0
+  - name: panos_k12_country_block_10x
+    include: panos_k12_country_block_10x
     include_variables:
       - name: all
         toggle_hint:
@@ -193,8 +193,8 @@ snippets:
           value: 'Yes'
     when: "'Yes' in INCLUDE_COUNTRY_BLOCK"
 
-  - name: panos_k12_ssl_decryption_10_0
-    include: panos_k12_ssl_decryption_10_0
+  - name: panos_k12_ssl_decryption_10x
+    include: panos_k12_ssl_decryption_10x
     include_variables:
       - name: all
         toggle_hint:
@@ -202,8 +202,8 @@ snippets:
           value: 'SSL_DECRYPTION'
     when: "'SSL_DECRYPTION' in SAFE_SEARCH"
 
-  - name: panos_k12_dns_proxy_10_0
-    include: panos_k12_dns_proxy_10_0
+  - name: panos_k12_dns_proxy_10x
+    include: panos_k12_dns_proxy_10x
     include_variables:
       - name: all
         toggle_hint:
@@ -211,8 +211,8 @@ snippets:
           value: 'DNS_PROXY'
     when: "'DNS_PROXY' in SAFE_SEARCH"
 
-  - name: panos_k12_local_dns_cname_10_0
-    include: panos_k12_local_dns_cname_10_0
+  - name: panos_k12_local_dns_cname_10x
+    include: panos_k12_local_dns_cname_10x
     include_variables:
       - name: all
         toggle_hint:
@@ -220,10 +220,10 @@ snippets:
           value: 'LOCAL_DNS_CNAME'
     when: "'LOCAL_DNS_CNAME' in SAFE_SEARCH"
 
-  - name: panos_k12_chromebook_no_decryption_10_0
-    include: panos_k12_chromebook_no_decryption_10_0
+  - name: panos_k12_chromebook_no_decryption_10x
+    include: panos_k12_chromebook_no_decryption_10x
     when: "'Yes' in INCLUDE_CHROMEBOOK_BYPASS"
 
-  - name: panos_k12_saml_no_decryption_10_0
-    include: panos_k12_saml_no_decryption_10_0
+  - name: panos_k12_saml_no_decryption_10x
+    include: panos_k12_saml_no_decryption_10x
     when: "'Yes' in INCLUDE_SAML_BYPASS"
