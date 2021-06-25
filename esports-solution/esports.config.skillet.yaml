@@ -371,26 +371,26 @@ snippets:
   - name: interface_l3
     when: "'l3_network' in network_type"
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
-    element: network_interface_l3.xml
+    file: network_interface_l3.xml
 
   - name: interface_vw
     when: "'vw_network' in network_type"
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
-    element: network_interface_vw.xml
+    file: network_interface_vw.xml
 
   - name: virtual_wire
     when: "'vw_network' in network_type"
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-wire
-    element: network_virtual_wire.xml
+    file: network_virtual_wire.xml
 
   - name: virtual_router
     when: "'l3_network' in network_type"
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
-    element: network_virtual_router.xml
+    file: network_virtual_router.xml
 
   - name: zone
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
-    element: zone.xml
+    file: zone.xml
 
   - name: esports_security_rules
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
