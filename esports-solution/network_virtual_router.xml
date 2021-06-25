@@ -1,0 +1,21 @@
+<entry name="default">
+  <protocol>
+    <bgp>
+      <enable>no</enable>
+      <dampening-profile>
+        <entry name="default">
+          <cutoff>1.25</cutoff>
+          <reuse>0.5</reuse>
+          <max-hold-time>900</max-hold-time>
+          <decay-half-life-reachable>300</decay-half-life-reachable>
+          <decay-half-life-unreachable>900</decay-half-life-unreachable>
+          <enable>yes</enable>
+        </entry>
+      </dampening-profile>
+    </bgp>
+  </protocol>
+  <interface>
+    <member>{{ interface_trust }}</member>
+    <member>{{ interface_untrust }}</member>
+  </interface>
+</entry>

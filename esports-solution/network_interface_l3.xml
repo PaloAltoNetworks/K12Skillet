@@ -1,0 +1,50 @@
+<ethernet>
+  <entry name="{{ interface_trust }}">
+    <layer3>
+      <ipv6>
+        <neighbor-discovery>
+          <router-advertisement>
+            <enable>no</enable>
+          </router-advertisement>
+        </neighbor-discovery>
+      </ipv6>
+      <ndp-proxy>
+        <enabled>no</enabled>
+      </ndp-proxy>
+      <lldp>
+        <enable>no</enable>
+      </lldp>
+      {%- if interface_trust_type == "dhcp" %}
+      <dhcp-client/>
+      {% else %}
+      <ip>
+        <entry name="{{ interface_trust_ip }}"/>
+      </ip>
+      {% endif %}
+    </layer3>
+  </entry>
+  <entry name="{{ interface_untrust }}">
+    <layer3>
+      <ipv6>
+        <neighbor-discovery>
+          <router-advertisement>
+            <enable>no</enable>
+          </router-advertisement>
+        </neighbor-discovery>
+      </ipv6>
+      <ndp-proxy>
+        <enabled>no</enabled>
+      </ndp-proxy>
+      <lldp>
+        <enable>no</enable>
+      </lldp>
+      {%- if interface_untrust_type == "dhcp" %}
+      <dhcp-client/>
+      {% else %}
+      <ip>
+        <entry name="{{ interface_untrust_ip }}"/>
+      </ip>
+      {% endif %}
+    </layer3>
+  </entry>
+</ethernet>

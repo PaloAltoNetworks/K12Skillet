@@ -1,0 +1,4 @@
+<entry name="{{ interface_virtual_wire_name }}">
+  <interface1>{{ interface_trust }}</interface1>
+  <interface2>{{ interface_untrust }}</interface2>
+</entry>
