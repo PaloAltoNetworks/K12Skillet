@@ -1,7 +1,7 @@
 name: esports_config_skillet
 # label used for menu selection
-label: IronSkillet for Version 10.0 used in K-12 Solution
-description: IronSkillet for Version 10.0 used in K-12 Solution
+label: eSports Configuration
+description: Configuration solution for eSports used in SLED
 
 type: panos
 
@@ -9,6 +9,7 @@ type: panos
 labels:
   collection:
     - Education
+    - eSports
 
 # variables used in the configuration templates
 # type_hint defines the form field type in pan-cnc
