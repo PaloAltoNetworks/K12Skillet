@@ -126,17 +126,6 @@ variables:
 
 snippets:
 
-  - name: eSports_device_setting_overwrite
-    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting
-    element: |
-      <ctd>
-        <strip-x-fwd-for>yes</strip-x-fwd-for>
-        <x-forwarded-for>yes</x-forwarded-for>
-        <allow-http-range>yes</allow-http-range>
-        <tcp-bypass-exceed-queue>yes</tcp-bypass-exceed-queue>
-        <udp-bypass-exceed-queue>yes</udp-bypass-exceed-queue>
-      </ctd>
-
   - name: eSports_tag
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
     element: |
