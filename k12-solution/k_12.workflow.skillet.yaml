@@ -52,8 +52,8 @@ variables:
         value: load_iron_skillet
       - key: Configure for K-12
         value: load_k_12_config
-#      - key: Configure for eSports
-#        value: load_esports_config
+      - key: Configure for eSports
+        value: load_esports_config
 
 
 
@@ -80,5 +80,8 @@ snippets:
   - name: k_12_config_skillet
     when: "'load_k_12_config' in subskillet_execution_options"
 
-#  - name: esports_config_skillet
-#    when: "'load_esports_config' in subskillet_execution_options"
+  - name: eSports_rest_get_interface_and_zone_names
+    when: "'load_esports_config' in subskillet_execution_options"
+
+  - name: esports_config_skillet
+    when: "'load_esports_config' in subskillet_execution_options"
