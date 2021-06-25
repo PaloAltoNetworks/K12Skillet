@@ -126,6 +126,16 @@ variables:
 
 
 snippets:
+  - name: esports_sinkhole_addresses
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
+    element: |
+      <entry name="Sinkhole-IPv4">
+          <fqdn>sinkhole.paloaltonetworks.com</fqdn>
+      </entry>
+      <entry name="Sinkhole-IPv6">
+          <ip-netmask>2600:5200::1</ip-netmask>
+      </entry>
+
 
   - name: eSports_tag
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
