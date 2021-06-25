@@ -29,7 +29,6 @@ The  `K12Skillet` project is managed by engineers.  As such, it could always use
 #### Submit Feedback
 The best way to send feedback is to file an issue at https://github.com/PaloAltoNetworks/K12Skillet/issues.
 
-If you are proposing a change:
 
 * Explain in detail why it is needed.
 * Keep the scope as narrow as possible, to make it easier to implement.
