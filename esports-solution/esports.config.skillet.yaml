@@ -452,7 +452,7 @@ snippets:
       </rules>
 
   - name: esports_l3_security_rules_tuning
-    when: "'l3_network' in network_typ and 'tuning_yes' in tuning_rule"
+    when: "'l3_network' in network_type and 'tuning_yes' in tuning_rule"
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
     element: |
       <rules>
