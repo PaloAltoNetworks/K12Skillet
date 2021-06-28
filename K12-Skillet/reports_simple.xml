@@ -1,0 +1,65 @@
+<entry name="SLED-Wildfire verdicts SMTP">
+  <period>last-7-calendar-days</period>
+  <topn>50</topn>
+  <topm>10</topm>
+  <caption>SLED-Wildfire verdicts SMTP</caption>
+  <query>(app eq smtp) and (category neq benign)</query>
+  <description>Links sent from emails found to be malicious. </description>
+  <type>
+    <wildfire>
+      <sortby>repeatcnt</sortby>
+      <aggregate-by>
+        <member>filedigest</member>
+        <member>container-of-app</member>
+        <member>app</member>
+        <member>category</member>
+        <member>filetype</member>
+        <member>rule</member>
+        <member>subject</member>
+        <member>sender</member>
+        <member>recipient</member>
+        <member>misc</member>
+      </aggregate-by>
+    </wildfire>
+  </type>
+</entry>
+<entry name="SLED-Clients sinkholed">
+  <period>last-7-calendar-days</period>
+  <topn>50</topn>
+  <topm>50</topm>
+  <caption>SLED-Clients sinkholed</caption>
+  <query>(rule eq 'DNS Sinkhole Block')</query>
+  <type>
+    <traffic>
+      <sortby>repeatcnt</sortby>
+      <group-by>from</group-by>
+      <aggregate-by>
+        <member>src</member>
+        <member>srcuser</member>
+      </aggregate-by>
+      <values>
+        <member>repeatcnt</member>
+      </values>
+    </traffic>
+  </type>
+</entry>
+
+<entry name="SLED_Threat_Log">
+  <type>
+    <threat>
+      <aggregate-by>
+        <member>action</member>
+        <member>category-of-app</member>
+        <member>app</member>
+        <member>dst</member>
+        <member>dstloc</member>
+        <member>device_name</member>
+        <member>srcuser</member>
+      </aggregate-by>
+    </threat>
+  </type>
+  <period>last-7-calendar-days</period>
+  <topn>10</topn>
+  <topm>10</topm>
+  <caption>SLED_Threat_Log</caption>
+</entry>

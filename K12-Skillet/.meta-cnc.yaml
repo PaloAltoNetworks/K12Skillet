@@ -1,0 +1,173 @@
+# snippets is used to load a full NGFW configuration
+
+# snippet folder name
+name: K12 Skillet
+# label used for menu selection
+label: (Step 3) K12 Skillet
+description: K12 Safe Search Skillet baseline configuration for a firewall
+
+type: panos
+extends:
+
+# grouping of like snippets for dynamic menu creation in pan-cnc
+labels:
+  service_type: K12_skillet
+  collection:
+    - Education
+
+# variables used in the configuration templates
+# type_hint defines the form field type in pan-cnc
+variables:
+# this configuration allows you to select what type of Safe Search configuration
+# to be used during the configuration build
+  - name: SAFE_SEARCH
+    description: What type of Safe Search configuration do you want to enable?
+    default: 'none'
+    type_hint: dropdown
+    dd_list:
+      - key: 'none'
+        value: 'NONE'
+      - key: 'SSL Decryption'
+        value: 'SSL_DECRYPTION'
+      - key: 'DNS Proxy'
+        value: 'DNS_PROXY'
+      - key: 'Local DNS CNAME'
+        value: 'LOCAL_DNS_CNAME'
+# option built into the templates to ignore the panw published external dynamic lists security rules
+# should ONLY be excluded based on licensing limitations outside of best practices
+# when 'yes' (default) will include the EDL rule
+  - name: INCLUDE_PAN_EDL
+    description: Include the predefined Palo Alto Networks external lists security rules
+    default: 'no'
+    type_hint: dropdown
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
+  - name: INCLUDE_COUNTRY_BLOCK
+    description: Add rules to permit traffic only from US, Mexico, Canada, and Cloud Providers EDL
+    default: 'no'
+    type_hint: dropdown
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
+  - name: SANCTIONED_DNS_01_NAME
+    description: Safe Search Sanctioned External DNS Server Name
+    default: Google 1
+    type_hint: text
+  - name: SANCTIONED_DNS_01_IP
+    description: Safe Search Sanctioned External DNS Server IP Address
+    default: 8.8.8.8/32
+    type_hint: text
+  - name: SANCTIONED_DNS_02_NAME
+    description: Safe Search Sanctioned External DNS Server Name
+    default: Google 2
+    type_hint: text
+  - name: SANCTIONED_DNS_02_IP
+    description: Safe Search Sanctioned External DNS Server IP Address
+    default: 8.8.4.4/32
+    type_hint: text
+  - name: LOCAL_DNS_01_NAME
+    description: Safe Search Local DNS Server Name
+    default: Local DNS 1
+    type_hint: text
+  - name: LOCAL_DNS_01_IP
+    description: Safe Search Local DNS Server IP Address
+    default: 192.0.2.1
+    type_hint: text
+  - name: DNS_PROXY_IP_PRIMARY
+    description: Safe Search DNS Proxy Primary DNS Server IP Address
+    default: 8.8.8.8
+    type_hint: text
+  - name: DNS_PROXY_IP_SECONDARY
+    description: Safe Search DNS Proxy Secondary DNS Server IP Address
+    default: 8.8.4.4
+    type_hint: text
+  - name: GOOGLE_SAFE_SEARCH_IP
+    description: Google Safe Search Server IP
+    default: 216.239.38.120
+    type_hint: text
+  - name: BING_SAFE_SEARCH_IP
+    description: Bing Safe Search Server IP
+    default: 204.79.197.220
+    type_hint: text
+  - name: CLOUD_EDL_MICROSOFT
+    description: Microsoft Cloud EDL URL
+    default: http://192.0.2.1
+    type_hint: text
+  - name: CLOUD_EDL_AMAZON
+    description: Amazon Cloud EDL URL
+    default: http://192.0.2.1
+    type_hint: text
+  - name: CLOUD_EDL_GOOGLE
+    description: Google Cloud EDL URL
+    default: http://192.0.2.1
+    type_hint: text
+  - name: CRITICAL_EDUCATION_SITE
+    description: Critical Education Site For Decryption Bypass
+    default: example.com
+    type_hint: text
+  - name: TRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/2
+    type_hint: text
+  - name: TRUSTED_INTERFACE_IP
+    description: Trusted Interface IP
+    default: 204.79.197.220/32
+    type_hint: text
+  - name: UNTRUST_ZONE_INTERFACE
+    description: Trusted Interface reference
+    default: ethernet1/1
+    type_hint: text
+
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+snippets:
+  - name: address
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
+    file: address.xml
+  - name: address_group
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address-group
+    file: address_group.xml
+  - name: tag
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
+    file: tag.xml
+  - name: external_list
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/external-list
+    file: external_list.xml
+  - name: interface
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
+    file: interface.xml
+  - name: virtual_router
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
+    file: network_virtual_router.xml
+  - name: zone
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    file: zone.xml
+  - name: dns_proxy
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/dns-proxy
+    file: dns_proxy.xml
+  - name: profiles_custom_url_category
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/custom-url-category
+    file: profiles_custom_url_category.xml
+  - name: profiles_url_filtering
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/url-filtering
+    file: profiles_url_filtering.xml
+  - name: profile_group
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profile-group
+    file: profile_group.xml
+  - name: security_rules
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
+    file: rulebase_security.xml
+  - name: decryption_rules
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/decryption
+    file: rulebase_decryption.xml
+  - name: response_page
+    xpath: /config/shared/response-page
+    file: response_page.xml
+  - name: reports
+    xpath: /config/shared/reports
+    file: reports_simple.xml
