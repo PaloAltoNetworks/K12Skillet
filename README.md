@@ -55,7 +55,7 @@ The following features are included in the K-12 Quickplay Solution:
     * Targeted decryption policies to help enable SSL-Decryption adoption and limit risk
 
 
-## How to Use the K-12 Solution
+## How to Use the K-12 and eSports Solution
 
 It is assumed that you have PanHandler Version 4.5+ already installed. Follow these instructions for running 
 the K-12 Solution:
@@ -76,6 +76,7 @@ the skillets you wish to execute. Those skillets perform the following actions:
     2. Perform a content update
     3. Configure the latest IronSkillet specific to your PAN-OS version
     4. Configure the K-12 Solution
+    5. Configure the eSports Solution
 
 > **NOTE**: You must have IronSkillet configured on your NGFW before loading the K-12 solution since many K-12 
 > configuration elements depend on IronSkillet elements. 
