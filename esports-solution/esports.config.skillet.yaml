@@ -58,73 +58,6 @@ variables:
         value: tuning_no
 
 
-  - name: interface_trust
-    description: Trusted zone interface
-    default: ethernet1/1
-    type_hint: dropdown
-    source: interface_names
-  - name: interface_trust_type
-    description: Firewall trusted interface IP type
-    default: static
-    toggle_hint:
-      source: network_type
-      value: 'l3_network'
-    type_hint: dropdown
-    dd_list:
-      - key: dhcp-client
-        value: dhcp
-      - key: static
-        value: static
-  - name: interface_trust_ip
-    description: Firewall trusted interface IP
-    default: 192.0.2.1/24
-    type_hint: text
-    toggle_hint:
-      source: network_type
-      value: 'l3_network'
-
-  - name: interface_untrust
-    description: Untrusted zone interface
-    default: ethernet1/2
-    type_hint: dropdown
-    source: interface_names
-  - name: interface_untrust_type
-    description: Firewall untrusted interface IP type
-    default: static
-    toggle_hint:
-      source: network_type
-      value: 'l3_network'
-    type_hint: dropdown
-    dd_list:
-      - key: dhcp-client
-        value: dhcp
-      - key: static
-        value: static
-  - name: interface_untrust_ip
-    description: Firewall untrusted interface IP
-    toggle_hint:
-      source: network_type
-      value: 'l3_network'
-    default: 192.0.2.1/24
-    type_hint: text
-  - name: zone_name_trust
-    description: Name of trusted zonee
-    default: Trust
-    type_hint: text
-  - name: zone_name_untrust
-    description: Name of untrusted zonee
-    default: Untrust
-    type_hint: text
-  - name: interface_virtual_wire_name
-    description: Firewall Virtual Wire name
-    toggle_hint:
-      source: network_type
-      value: 'vw_network'
-    default: esports_virtual_wire
-    type_hint: text
-
-
-
 snippets:
   - name: esports_sinkhole_addresses
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
@@ -342,65 +275,42 @@ snippets:
         </members>
       </entry>
 
-#  - name: panos_network_snippets_layer3
-#    include: panos_network_snippets_layer3
-#    when: "'l3_network' in network_type"
-#    include_variables:
-#      - name: all
-#        toggle_hint:
-#          source: network_type
-#          value: 'l3_network'
-#
-#  - name: panos_network_snippets_dhcp_server_basic
-#    include: panos_network_snippets_dhcp_server_basic
-#    when: "'l3_network' in network_type"
-#    include_variables:
-#      - name: all
-#        toggle_hint:
-#          source: network_type
-#          value: 'l3_network'
-#
-#  - name: panos_network_snippets_nat_dipp
-#    include: panos_network_snippets_nat_dipp
-#    when: "'l3_network' in network_type"
-#    include_variables:
-#      - name: all
-#        toggle_hint:
-#          source: network_type
-#          value: 'l3_network'
-#
-#  - name: panos_network_snippets_vwire
-#    include: panos_network_snippets_vwire
-#    when: "'vw_network' in network_type"
-#    include_variables:
-#      - name: all
-#        toggle_hint:
-#          source: network_type
-#          value: 'vw_network'
-
-  - name: interface_l3
+  - name: panos_network_snippets_layer3
+    include: panos_network_snippets_layer3
     when: "'l3_network' in network_type"
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
-    file: network_interface_l3.xml
+    include_variables:
+      - name: all
+        toggle_hint:
+          source: network_type
+          value: 'l3_network'
 
-  - name: interface_vw
-    when: "'vw_network' in network_type"
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
-    file: network_interface_vw.xml
-
-  - name: virtual_wire
-    when: "'vw_network' in network_type"
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-wire
-    file: network_virtual_wire.xml
-
-  - name: virtual_router
+  - name: panos_network_snippets_dhcp_server_basic
+    include: panos_network_snippets_dhcp_server_basic
     when: "'l3_network' in network_type"
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
-    file: network_virtual_router.xml
+    include_variables:
+      - name: all
+        toggle_hint:
+          source: network_type
+          value: 'l3_network'
 
-  - name: zone
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
-    file: zone.xml
+  - name: panos_network_snippets_nat_dipp
+    include: panos_network_snippets_nat_dipp
+    when: "'l3_network' in network_type"
+    include_variables:
+      - name: all
+        toggle_hint:
+          source: network_type
+          value: 'l3_network'
+
+  - name: panos_network_snippets_vwire
+    include: panos_network_snippets_vwire
+    when: "'vw_network' in network_type"
+    include_variables:
+      - name: all
+        toggle_hint:
+          source: network_type
+          value: 'vw_network'
+
 
   - name: esports_security_rules
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
@@ -456,10 +366,10 @@ snippets:
             </group>
           </profile-setting>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <source>
             <member>any</member>
@@ -500,10 +410,10 @@ snippets:
             </group>
           </profile-setting>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <source>
             <member>any</member>
@@ -553,10 +463,10 @@ snippets:
             </group>
           </profile-setting>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <source>
             <member>any</member>
@@ -599,10 +509,10 @@ snippets:
             </group>
           </profile-setting>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <source>
             <member>any</member>
@@ -645,10 +555,10 @@ snippets:
            </group>
           </profile-setting>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <source>
             <member>any</member>
@@ -698,10 +608,10 @@ snippets:
             </group>
           </profile-setting>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <source>
             <member>any</member>
@@ -742,10 +652,10 @@ snippets:
             <any/>
           </dscp-tos>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <source>
             <member>any</member>
@@ -779,10 +689,10 @@ snippets:
             <any/>
           </dscp-tos>
           <from>
-            <member>{{ zone_name_trust }}</member>
+            <member>{{ zone_internal }}</member>
           </from>
           <to>
-            <member>{{ zone_name_untrust }}</member>
+            <member>{{ zone_internet }}</member>
           </to>
           <source>
             <member>any</member>
