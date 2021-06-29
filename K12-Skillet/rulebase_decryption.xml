@@ -1,0 +1,60 @@
+<rules>
+    <entry name="NO-Decrypt Critical_Education_Sites" uuid="1d316f9d-d319-40a5-beaf-8714ed113a7d">
+    <category>
+      <member>Critical_Education_Sites</member>
+    </category>
+    <service>
+      <member>any</member>
+    </service>
+    <type>
+      <ssl-forward-proxy/>
+    </type>
+    <from>
+      <member>Trust</member>
+    </from>
+    <to>
+      <member>Untrust</member>
+    </to>
+    <source>
+      <member>any</member>
+    </source>
+    <destination>
+      <member>any</member>
+    </destination>
+    <source-user>
+      <member>any</member>
+    </source-user>
+    <action>no-decrypt</action>
+  </entry>
+    {%- if SAFE_SEARCH == "SSL_DECRYPTION" %}
+  <entry name="Decrypt For Safe Search">
+    <category>
+      <member>Approved Search Engines</member>
+    </category>
+    <service>
+      <member>any</member>
+    </service>
+    <type>
+      <ssl-forward-proxy/>
+    </type>
+    <from>
+      <member>any</member>
+    </from>
+    <to>
+      <member>Untrust</member>
+    </to>
+    <source>
+      <member>any</member>
+    </source>
+    <destination>
+      <member>any</member>
+    </destination>
+    <source-user>
+      <member>any</member>
+    </source-user>
+    <action>decrypt</action>
+    <profile>default</profile>
+    <disabled>yes</disabled>
+  </entry>
+    {% endif %}
+</rules>
