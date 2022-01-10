@@ -11,8 +11,8 @@ The security policy provides for outbound policies using IronSkillet best practi
 
 The K-12 Skillet utilizes Git submodules in order to pull external skillets into this repository for its use. This 
 K-12 solution utilizes the skillets located in the [IronSkillet Components](https://github.com/PaloAltoNetworks/ironskillet-components), 
-[SLED Components](https://github.com/annabarone/SLED-components), [PAN-OS Upgrade/Downgrade](https://gitlab.com/panw-gse/tech-library/deploy/panos-ansible-upgrade-downgrade),
-and [PAN-OS Config Elements](https://gitlab.com/panw-gse/tech-library/configure/panos-config-elements) repositories. Since 
+[SLED Components](https://github.com/annabarone/SLED-components), [PAN-OS Upgrade/Downgrade](https://github.com/PaloAltoNetworks/panos-ansible-upgrade-downgrade/),
+and [PAN-OS Config Elements](https://github.com/pan-community/panos-config-elements/) repositories. Since 
 the submodules specifically point to a commit in the external repository's history, the K-12 solution 
 can stay up-to-date by simply updating the commit references. 
 
